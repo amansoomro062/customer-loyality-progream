@@ -22,7 +22,7 @@ npm install && npm start
 2. Get started
     * Signup on [Hausra](https://hasura.io/)
     * Create a new project and connect [Heroku](https://www.heroku.com/) database
-    * Create a table, customers, add columns, name, email, and role
+    * Create a table, customers, add columns, id(primary key), name, email, and role
     * Create a simple, single page using the [Chakra UI table component](https://chakra-ui.com/docs/components/table/usage)
 
 3. UI Design
