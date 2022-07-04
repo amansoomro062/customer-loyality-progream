@@ -3,13 +3,31 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ChakraProvider } from '@chakra-ui/react';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+
+//Initialize Apollo Client for hasura connection
+const client = new ApolloClient({
+  uri: "hasura_graphql_URL",
+  cache: new InMemoryCache({ addTypename: false }),
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+    "X-Hasura-Admin-Secret":
+      "hasura_admin_secret_here",
+  },
+});
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ChakraProvider>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </ChakraProvider>
   </React.StrictMode>
 );
 
