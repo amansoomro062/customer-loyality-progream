@@ -43,7 +43,7 @@ We expect the solution to work in the latest version of Chrome
 ## Acceptance criteria
 
 **We have a high focus on attention to details in code**
-* Solution should be written in either Reactjs
+* Solution should be written in Reactjs
 * Chakra UI should be used
 * The formatting of the codebase should be consistent and written in a modular approach
 * We expect the codebase to be written using ES6+ and libraries kept to a minimum
