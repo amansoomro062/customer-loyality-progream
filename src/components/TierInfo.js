@@ -64,7 +64,7 @@ export default function TierInfo() {
               display={{ base: "none", lg: "flex" }}
               flexDirection="column"
               justifyContent="center"
-              py={{ lg: "16" }}
+              // py={{ "lg": "16" }}
             >
               <Box mx="auto" maxW="xs" px="8">
                 <Text fontSize="base" fontWeight="semibold" color="gray.600">
