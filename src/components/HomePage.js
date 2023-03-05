@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   Flex,
@@ -22,6 +22,7 @@ import {
   Td,
   Badge,
 } from "@chakra-ui/react";
+import { getCustomerDetails } from "../services/APIService";
 
 const HomePage = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -29,6 +30,23 @@ const HomePage = () => {
   const handleTabChange = (index) => {
     setActiveTab(index);
   };
+
+  useEffect(() => {
+    console.log("I'm here")
+
+    getCustomerDetails("aman@example.com").then(
+      (response) => {
+
+        let customerId = response?.customers?.[0]?.id
+
+        console.log(customerId)
+
+      }
+    ).catch(err => {
+      console.log("ERR", err)
+    })
+  }, [])
+ 
 
   const transactions = [
     { date: "01/01/2022", description: "Grocery Shopping", amount: "-$50.00" },
