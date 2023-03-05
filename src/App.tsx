@@ -11,13 +11,19 @@ import PaymentForm from "./components/Payment";
 import RewardPointsScreen from "./components/ProductDisplay";
 import ProductsScreen from "./components/ProductScreen";
 import CustomerLogin from "./components/CustomerLogin";
+import PaymentSuccess from "./components/PaymentSuccess";
 
 function App() {
   return (
       // <RewardPointsScreen />
-      <CustomerLogin/>
+      // <CustomerLogin/>
+      
+      <PaymentSuccess/>
       
   );
 }
 
 export default App;
+
+
+
