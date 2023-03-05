@@ -10,6 +10,7 @@ import TierInfo from "./components/TierInfo";
 import ProductsScreen from "./components/ProductScreen";
 import NavBar from "./components/NavBar";
 import CartScreen from "./components/CartScreen";
+import AccountScreen from "./components/AccountScreen";
 
 //Initialize Apollo Client for hasura connection
 
@@ -28,6 +29,7 @@ root.render(
           <Route path="/products" element={<ProductsScreen />} />
           <Route path="/offers" element={<ProductsScreen />} />
           <Route path="/tiers" element={<TierInfo />} />
+          <Route path="/account" element={<AccountScreen />} />
 
           <Route path="/login" element={<App />} />
           <Route path="/" element={<App />} />

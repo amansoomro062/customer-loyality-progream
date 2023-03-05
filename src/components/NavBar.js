@@ -104,7 +104,7 @@ import { useNavigate } from "react-router-dom";
                 mr={{ base: "0", md: "4" }}
                 _hover={{ "color": "#f06c01" }}
                 cursor={"pointer"}
-                onClick={() => navigateTo('/offers')}
+                onClick={() => navigateTo('/account')}
 
               >
                 <Text
