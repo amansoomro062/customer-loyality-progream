@@ -30,6 +30,20 @@ import {
           </Box>
           <Box>
             <Flex alignItems="center" w="50vw" px="20px" justify={"space-evenly"}>
+            <Box
+                mr={{ base: "0", md: "4" }}
+                _hover={{ "color": "#f06c01" }}
+                cursor={"pointer"}
+              >
+                <Text
+                  fontSize={{ base: "sm", md: "md" }}
+                  fontWeight="medium"
+                  textAlign={{ base: "center", md: "left" }}
+                >
+                  Home
+                </Text>
+              </Box>
+
               <Box
                 mr={{ base: "0", md: "4" }}
                 _hover={{ "color": "#f06c01" }}
@@ -86,24 +100,15 @@ import {
           </Box>
           <Box>
             <Flex alignItems="center">
-              <Link href="/cart" _hover={{ textDecoration: "none" }}>
+              <Box href="/cart" _hover={{ textDecoration: "none" }}>
                 <IconButton
                   icon={<FaShoppingCart />}
                   aria-label="cart"
                   variant="ghost"
                   size={{ base: "md", md: "lg" }}
                 />
-                <Badge
-                  colorScheme="purple"
-                  variant="subtle"
-                  position="absolute"
-                  top="-2"
-                  right="-2"
-                  fontSize="sm"
-                >
-                  3
-                </Badge>
-              </Link>
+
+              </Box>
             </Flex>
           </Box>
         </Flex>
