@@ -10,10 +10,13 @@ import NavBar from "./components/NavBar";
 import PaymentForm from "./components/Payment";
 import RewardPointsScreen from "./components/ProductDisplay";
 import ProductsScreen from "./components/ProductScreen";
+import CustomerLogin from "./components/CustomerLogin";
 
 function App() {
   return (
-      <RewardPointsScreen />
+      // <RewardPointsScreen />
+      <CustomerLogin/>
+      
   );
 }
 
