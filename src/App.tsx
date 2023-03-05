@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar";
 
 import PaymentForm from "./components/Payment";
 import RewardPointsScreen from "./components/ProductDisplay";
+import ProductsScreen from "./components/ProductScreen";
 
 function App() {
   return (

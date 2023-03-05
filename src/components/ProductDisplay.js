@@ -14,10 +14,11 @@ import {
     Divider,
     Spinner
 } from "@chakra-ui/react";
-import { getProducts } from "../services/APIService";
+import { getLoyalityTiers, getProducts } from "../services/APIService";
 
 export default function RewardPointsScreen() {
     const [rewardPoints, setRewardPoints] = useState(2000);
+    const [loyaltyTiers, setLoyaltyTiers] = useState([])
 
     const [products, setProducts] = useState([])
 
@@ -28,6 +29,16 @@ export default function RewardPointsScreen() {
         }).catch(err => {
             console.log(err)
         })
+    }, [])
+
+    useEffect(() => {
+        getLoyalityTiers()
+            .then(response => {
+                console.log("RESPONSE", response)
+                setLoyaltyTiers(response.loyality_tiers)
+            }).catch(err => {
+                console.log(err)
+            })
     }, [])
 
 
@@ -44,7 +55,7 @@ export default function RewardPointsScreen() {
     const bg = useColorModeValue("#f3f0ec");
     const textColor = useColorModeValue("gray.800", "gray.200");
 
-    if(products === []) {
+    if (products === []) {
         return (
             <Flex align={"center"} justify="center" >
                 <Stack>
@@ -57,20 +68,36 @@ export default function RewardPointsScreen() {
 
     return (
         <Box bg={bg} p={4} >
-            <Flex direction="column" align="center">
-                <Box p={4}>
-                    <Heading size="lg">My Reward Points</Heading>
-                    <Text fontSize="xl" color={textColor}>
-                        {rewardPoints} points
-                    </Text>
-                </Box>
-                <Stack direction="row" spacing={4} align="center">
-                    <Badge colorScheme="green">100 points = $1</Badge>
-                    <Button colorScheme="green" size="sm">
-                        Redeem Points
-                    </Button>
-                </Stack>
+            <Flex align="center" justify={'center'}>
+                <Flex direction="column" align="center" bg={"white"} px={"30px"} pb={"10px"} borderRadius={"md"} boxShadow={"sm"} mr={"10px"}>
+                    <Box p={4}>
+                        <Text color={"grey"} fontSize={"14px"} textTransform={"uppercase"}>Loyalty Points</Text>
+                        <Text fontSize="50px" color={textColor} fontWeight={"bold"}>
+                            {rewardPoints} <Text as="span" fontSize={"14"}>points</Text>
+                        </Text>
+                    </Box>
+
+                </Flex>
+
+                <Flex direction="column" align="center" bg={"white"} px={"30px"} pb={"10px"} borderRadius={"md"} boxShadow={"sm"} mr={"10px"}>
+                    <Box p={4}>
+                    <Text color={"grey"} fontSize={"14px"} textTransform={"uppercase"}>Tier Level</Text>
+                    <Text fontSize="50px" color={textColor} fontWeight={"bold"}>
+                            Silver 
+                        </Text>
+                    </Box>
+                </Flex>
+
+                <Flex direction="column" align="center" bg={"white"} px={"30px"} pb={"10px"} borderRadius={"md"} boxShadow={"sm"} >
+                    <Box p={4}>
+                    <Text color={"grey"} fontSize={"14px"} textTransform={"uppercase"}>Remaining Spend</Text>
+                    <Text fontSize="50px" color={textColor} fontWeight={"bold"}>
+                            £50 <Text as="span" fontSize={"14"}>more</Text>
+                        </Text>
+                    </Box>
+                </Flex>
             </Flex>
+
             <Flex align={"center"} justify="center">
                 <Box mt={8} maxWidth="100vw" >
                     <Heading size="lg" mb={4}>
