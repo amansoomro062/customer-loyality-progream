@@ -15,14 +15,16 @@ import {
   Tab,
   TabPanel,
   TabPanels,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import NavBar from "./NavBar";
 
 const CustomerAccountPage = () => {
+  const bg = useColorModeValue("#f3f0ec");
   return (
     <>
       <NavBar />
-      <Flex align={"center"} justify="center">
+      <Flex align={"center"} justify="center" bg={bg} minH={"100vh"}>
         <Box p={4} w="60vw">
           <Flex alignItems="center" mb={4}>
             <Avatar

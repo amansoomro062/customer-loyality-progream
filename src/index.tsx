@@ -13,6 +13,7 @@ import AccountScreen from "./components/AccountScreen";
 import CustomerLogin from "./components/CustomerLogin";
 import { Customer } from "./context/customer-context";
 import PaymentForm from "./components/Payment";
+import OffersScreen from "./components/OfferScreen";
 
 //Initialize Apollo Client for hasura connection
 
@@ -33,7 +34,7 @@ root.render(
             <Route path="/cart" element={<CartScreen />} />
             <Route path="/tiers" element={<TierInfo />} />
             <Route path="/products" element={<ProductsScreen />} />
-            <Route path="/offers" element={<ProductsScreen />} />
+            <Route path="/offers" element={<OffersScreen />} />
             <Route path="/account" element={<AccountScreen />} />
             <Route path="/payment" element={<PaymentForm />} />
             

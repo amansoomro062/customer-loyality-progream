@@ -158,13 +158,7 @@ export default function RewardPointsScreen() {
                     Add to Cart
                   </Text>
 
-                  {/* <Button
-                                        colorScheme="green"
-                                        
-                                        onClick={() => handlePurchase(product.id, product.price)}
-                                    >
-                                        Add to Cart
-                                    </Button> */}
+                  
                 </Flex>
               </Box>
             ))}

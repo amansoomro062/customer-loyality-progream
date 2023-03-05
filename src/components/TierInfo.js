@@ -5,14 +5,15 @@ import {
   Heading,
   Grid, GridItem,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { getLoyalityTiers } from "../services/APIService";
 import NavBar from "./NavBar";
 
 
-
 export default function TierInfo() {
   const [loyaltyTiers, setLoyaltyTiers] = useState([])
+  const bg = useColorModeValue("#f3f0ec");
 
   useEffect(() => {
     getLoyalityTiers().then(response => {
@@ -34,7 +35,7 @@ export default function TierInfo() {
   return (
     <>
     <NavBar />
-    <Box bg="white" py={{ base: "24", sm: "32" }}>
+    <Box minH={"100vh"} py={{ base: "24", sm: "32" }} bg={bg} >
       <Box mx="auto" maxW="7xl" px={{ base: "6", lg: "8" }}>
         <Box
           mx="auto"
@@ -50,7 +51,7 @@ export default function TierInfo() {
             mb="6"
             textAlign={{ base: "center", sm: "left" }}
           >
-            Simple no-tricks pricing
+            Our Tier System
           </Heading>
           <Text
             fontSize="lg"
@@ -58,8 +59,7 @@ export default function TierInfo() {
             color="gray.600"
             mb={{ base: "10", sm: "0" }}
           >
-            Distinctio et nulla eum soluta et neque labore quibusdam. Saepe et
-            quasi iusto modi velit ut non voluptas in. Explicabo id ut laborum.
+            Get ready to level up your loyalty game and enjoy VIP treatment with our tier based rewards program!
           </Text>
         </Box>
         <Grid
