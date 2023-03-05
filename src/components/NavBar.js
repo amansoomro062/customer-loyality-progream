@@ -10,8 +10,15 @@ import {
     Image,
   } from "@chakra-ui/react";
   import { FaShoppingCart } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
   
   function NavBar() {
+
+    const navigate = useNavigate()
+
+    function navigateTo(url) {
+      navigate(url)
+    }
     return (
       <Box bg="white" shadow="md" py="2" px={{ base: "4", md: "10" }}>
         <Flex
@@ -20,7 +27,10 @@ import {
           alignItems="center"
           justifyContent="space-between"
         >
-          <Box>
+          <Box                 
+              onClick={() => navigateTo('/')}
+              cursor={"pointer"}
+              >
             <Flex alignItems="center">
               <Image 
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Sainsbury%27s_Logo.svg/2560px-Sainsbury%27s_Logo.svg.png" 
@@ -34,6 +44,7 @@ import {
                 mr={{ base: "0", md: "4" }}
                 _hover={{ "color": "#f06c01" }}
                 cursor={"pointer"}
+                onClick={() => navigateTo('/')}
               >
                 <Text
                   fontSize={{ base: "sm", md: "md" }}
@@ -48,6 +59,8 @@ import {
                 mr={{ base: "0", md: "4" }}
                 _hover={{ "color": "#f06c01" }}
                 cursor={"pointer"}
+                onClick={() => navigateTo('/tiers')}
+
               >
                 <Text
                   fontSize={{ base: "sm", md: "md" }}
@@ -61,6 +74,8 @@ import {
                 mr={{ base: "0", md: "4" }}
                 _hover={{ "color": "#f06c01" }}
                 cursor={"pointer"}
+                onClick={() => navigateTo('/products')}
+
               >
                 <Text
                   fontSize={{ base: "sm", md: "md" }}
@@ -74,6 +89,8 @@ import {
                 mr={{ base: "0", md: "4" }}
                 _hover={{ "color": "#f06c01" }}
                 cursor={"pointer"}
+                onClick={() => navigateTo('/offers')}
+
               >
                 <Text
                   fontSize={{ base: "sm", md: "md" }}
@@ -87,6 +104,8 @@ import {
                 mr={{ base: "0", md: "4" }}
                 _hover={{ "color": "#f06c01" }}
                 cursor={"pointer"}
+                onClick={() => navigateTo('/offers')}
+
               >
                 <Text
                   fontSize={{ base: "sm", md: "md" }}
@@ -100,7 +119,9 @@ import {
           </Box>
           <Box>
             <Flex alignItems="center">
-              <Box href="/cart" _hover={{ textDecoration: "none" }}>
+              <Box _hover={{ textDecoration: "none" }}
+                onClick={() => navigateTo('/cart')}
+              >
                 <IconButton
                   icon={<FaShoppingCart />}
                   aria-label="cart"

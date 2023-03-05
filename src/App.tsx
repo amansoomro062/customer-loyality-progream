@@ -12,22 +12,7 @@ import RewardPointsScreen from "./components/ProductDisplay";
 
 function App() {
   return (
-    <div>
-      {/* <HomePage /> */}
-      {/* <ProductScreen/> */}
-      {/* <CartScreen/> */}
-      {/* <TierInfo/> */}
-      <NavBar />
-      <CartScreen />
-
-      {/* <Flex h="100vh" w="100vw" align={"center"} justify="center">
-        <Stack >
-        <PaymentForm/>
-
-        </Stack>
-      </Flex> */}
-      {/* <RewardPointsScreen/> */}
-    </div>
+      <RewardPointsScreen />
   );
 }
 

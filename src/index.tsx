@@ -1,33 +1,39 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { ChakraProvider } from '@chakra-ui/react';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { ChakraProvider } from "@chakra-ui/react";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import TierInfo from "./components/TierInfo";
+import ProductsScreen from "./components/ProductScreen";
+import NavBar from "./components/NavBar";
+import CartScreen from "./components/CartScreen";
 
 //Initialize Apollo Client for hasura connection
-const client = new ApolloClient({
-  uri: "hasura_graphql_URL",
-  cache: new InMemoryCache({ addTypename: false }),
-  headers: {
-    "Access-Control-Allow-Origin": "*",
-    "X-Hasura-Admin-Secret":
-      "hasura_admin_secret_here",
-  },
-});
-
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ChakraProvider>
-      <ApolloProvider client={client}>
-        <App />
-      </ApolloProvider>
-    </ChakraProvider>
+    <BrowserRouter>
+      <ChakraProvider>
+        <NavBar />
+        <Routes>
+          <Route path="/home" element={<App />} />
+          <Route path="/cart" element={<CartScreen />} />
+          <Route path="/tiers" element={<TierInfo />} />
+          <Route path="/products" element={<ProductsScreen />} />
+          <Route path="/offers" element={<ProductsScreen />} />
+          <Route path="/tiers" element={<TierInfo />} />
+
+          <Route path="/login" element={<App />} />
+          <Route path="/" element={<App />} />
+        </Routes>
+      </ChakraProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
