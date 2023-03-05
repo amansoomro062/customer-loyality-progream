@@ -17,6 +17,7 @@ function App() {
       {/* <CartScreen/> */}
       {/* <TierInfo/> */}
       <NavBar/>
+      <CartScreen />
 
     </div>
   );
