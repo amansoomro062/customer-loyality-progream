@@ -73,6 +73,8 @@ const Customer = (props) => {
 
   const [loyalityTiers, setLoyalityTiers] = useState([]);
 
+  const [loyalityOffers, setLoyalityOffers] = useState([]);
+
   async function signout() {
     try {
       setAuthData(initialValues);
@@ -102,11 +104,6 @@ const Customer = (props) => {
 
           getCustomerLoyality(res?.customers[0]?.id)
             .then((response) => {
-              console.log(
-                "these are the details for customer Loyality",
-                response?.customer_loyality?.[0]
-              );
-
               setCustomerLoyalityData({
                 customer_spendings:
                   response?.customer_loyality?.[0]?.customer_spendings,
@@ -118,9 +115,8 @@ const Customer = (props) => {
                 response?.customer_loyality?.[0]?.customer_spendings
               )
                 .then((response) => {
-                  console.log(
-                    "these are the loyality tiers",
-                    response?.loyality_tiers?.[0]
+                  setLoyalityOffers(
+                    response?.loyality_tiers?.[0]?.loyality_offers_eligiblities
                   );
 
                   let i = response?.loyality_tiers?.[0];
@@ -264,7 +260,8 @@ const Customer = (props) => {
         customerLoyalityData,
         loyalityTiers,
         refetch,
-        setCart
+        setCart,
+        loyalityOffers,
       }}
     >
       {props.children}

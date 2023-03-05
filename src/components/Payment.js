@@ -28,7 +28,7 @@ export default function PaymentForm() {
   const [cvv, setCvv] = useState("123");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { cart, authData, refetch, loyalityTiers,setCart } =
+  const { cart, authData, refetch, loyalityTiers, setCart, customerData } =
     useContext(CustomerContext);
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -46,6 +46,21 @@ export default function PaymentForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    console.log(customerData?.savings)
+
+    let i = 0;
+
+    if(i > 1000 && i < 2500) {
+      console.log("Bronze")
+      i = 0.03
+    } else if(i > 2500 && i < 6000) {
+      console.log("Silver")
+      i = 0.06
+    } else if(i > 6000) {
+      console.log("Gold")
+      i = 0.11
+    }
 
     setLoading(true);
     console.log({
@@ -76,7 +91,8 @@ export default function PaymentForm() {
       addCustomerPayment(
         totalPrice,
         authData.customerId,
-        loyalityTiers.points_multiplier || 0
+        loyalityTiers.points_multiplier || 0,
+        i
       )
         .then((response) => {
           console.log("This is the payment added", response);

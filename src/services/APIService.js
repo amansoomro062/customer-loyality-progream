@@ -53,15 +53,20 @@ export async function addOrderProducts(orderId, productId, quantity) {
   return i;
 }
 
-export async function addCustomerPayment(amount, customerId, multiplier) {
+export async function addCustomerPayment(
+  amount,
+  customerId,
+  multiplier,
+  savings_multiplier
+) {
   let i = await axios
     .post("https://better-mollusk-57.hasura.app/api/rest/addCustomerPayment", {
       amount: amount,
       customerId: customerId,
       type: "Shopping",
       type_of_payment: "ONTIME",
-      multiplier: parseInt(multiplier * amount),
-      subtract: -amount
+      multiplier: parseInt((multiplier + savings_multiplier) * amount),
+      subtract: -amount,
     })
     .then((res) => {
       return res?.data;
