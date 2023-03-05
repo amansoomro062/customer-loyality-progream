@@ -9,6 +9,8 @@ import NavBar from "./components/NavBar";
 
 import PaymentForm from "./components/Payment";
 import RewardPointsScreen from "./components/ProductDisplay";
+import OffersScreen from "./components/OfferScreen";
+import AccountScreen from "./components/AccountScreen";
 
 function App() {
   return (
@@ -17,8 +19,11 @@ function App() {
       {/* <ProductScreen/> */}
       {/* <CartScreen/> */}
       {/* <TierInfo/> */}
-      <NavBar />
-      <CartScreen />
+      {/* <NavBar />
+      <CartScreen /> */}
+      {/* <OffersScreen/> */}
+      <AccountScreen/>
+
 
       {/* <Flex h="100vh" w="100vw" align={"center"} justify="center">
         <Stack >
