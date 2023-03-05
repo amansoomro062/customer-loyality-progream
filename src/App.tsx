@@ -14,9 +14,12 @@ import CustomerLogin from "./components/CustomerLogin";
 
 function App() {
   return (
-      // <RewardPointsScreen />
-      <CustomerLogin/>
-      
+    // <HomePage />
+    <>
+      <NavBar />
+      <RewardPointsScreen />
+
+      </>
   );
 }
 

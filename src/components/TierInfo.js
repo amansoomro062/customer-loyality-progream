@@ -7,6 +7,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { getLoyalityTiers } from "../services/APIService";
+import NavBar from "./NavBar";
 
 
 
@@ -31,6 +32,8 @@ export default function TierInfo() {
 
 
   return (
+    <>
+    <NavBar />
     <Box bg="white" py={{ base: "24", sm: "32" }}>
       <Box mx="auto" maxW="7xl" px={{ base: "6", lg: "8" }}>
         <Box
@@ -140,5 +143,6 @@ export default function TierInfo() {
 
       </Box>
     </Box>
+    </>
   );
 }

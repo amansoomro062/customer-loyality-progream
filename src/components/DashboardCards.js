@@ -1,6 +1,8 @@
 import { Flex, Box, Text } from "@chakra-ui/react";
+import { useContext } from "react";
+import { CustomerContext } from "../context/customer-context";
 
-const DashboardCards = ({ rewardPoints, remainingSpend }) => {
+const DashboardCards = ({ rewardPoints, amountSpent }) => {
   const cardBg = "white";
   const cardBorderRadius = "md";
   const cardBoxShadow = "md";
@@ -9,6 +11,8 @@ const DashboardCards = ({ rewardPoints, remainingSpend }) => {
   const labelTextColor = "gray.500";
   const valueTextColor = "gray.900";
   const valueFontSize = "2xl";
+
+  const { loyalityTiers } = useContext(CustomerContext);
 
   return (
     <Flex align="center" justify={"center"}>
@@ -52,7 +56,8 @@ const DashboardCards = ({ rewardPoints, remainingSpend }) => {
             Tier Level
           </Text>
           <Text fontSize="50px" color={textColor} fontWeight={"bold"}>
-            Silver
+            {/* Silver */}
+            {loyalityTiers?.name}
           </Text>
         </Box>
       </Flex>
@@ -69,13 +74,10 @@ const DashboardCards = ({ rewardPoints, remainingSpend }) => {
       >
         <Box p={4}>
           <Text color={"grey"} fontSize={"14px"} textTransform={"uppercase"}>
-            Spend to Next Tier
+            Amount spent
           </Text>
           <Text fontSize="50px" color={textColor} fontWeight={"bold"}>
-            £50{" "}
-            <Text as="span" fontSize={"14"}>
-              more
-            </Text>
+            £{amountSpent} <Text as="span" fontSize={"14"}></Text>
           </Text>
         </Box>
       </Flex>

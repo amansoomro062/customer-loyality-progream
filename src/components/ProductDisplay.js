@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Flex,
   Box,
@@ -16,12 +16,17 @@ import {
 } from "@chakra-ui/react";
 import { getLoyalityTiers, getProducts } from "../services/APIService";
 import DashboardCards from "./DashboardCards";
+import { CustomerContext } from "../context/customer-context";
 
 export default function RewardPointsScreen() {
+  const { customerLoyalityData } = useContext(CustomerContext);
+
   const [rewardPoints, setRewardPoints] = useState(2000);
   const [loyaltyTiers, setLoyaltyTiers] = useState([]);
 
   const [products, setProducts] = useState([]);
+
+  const { addToCart } = useContext(CustomerContext);
 
   useEffect(() => {
     getProducts()
@@ -45,14 +50,8 @@ export default function RewardPointsScreen() {
       });
   }, []);
 
-  const handlePurchase = (productId, productPrice) => {
-    if (rewardPoints >= productPrice) {
-      setRewardPoints(rewardPoints - productPrice);
-      // Here you can add your logic to process the purchase
-      console.log(`Purchased product ${productId} for ${productPrice} points`);
-    } else {
-      console.log("Not enough reward points");
-    }
+  const handlePurchase = (product) => {
+    addToCart(product);
   };
 
   const bg = useColorModeValue("#f3f0ec");
@@ -68,9 +67,16 @@ export default function RewardPointsScreen() {
     );
   }
 
+  function getUpdatedPrice(price) {
+    return (price - (customerLoyalityData?.loyality_points * 0.005)).toFixed(2);
+  }
+
   return (
     <Box bg={bg} p={4}>
-      <DashboardCards rewardPoints={100} remainingSpend={1000}/>
+      <DashboardCards
+        rewardPoints={customerLoyalityData?.loyality_points || 0}
+        amountSpent={customerLoyalityData?.customer_spendings || 0}
+      />
 
       <Flex align={"center"} justify="center">
         <Box mt={8} maxWidth="100vw">
@@ -108,16 +114,32 @@ export default function RewardPointsScreen() {
 
                 <Divider></Divider>
                 <Flex justify={"space-between"}>
-                  <Text
-                    fontSize="xl"
-                    fontWeight="bold"
-                    color={textColor}
-                    textAlign="center"
-                    w="50%"
-                    py="10px"
-                  >
-                    £{product.price}
-                  </Text>
+                  <Flex w="50%" align={"center"} justify="center">
+                    <Text
+                      fontSize="17"
+                      fontWeight="600"
+                      color={"red.500"}
+                      textAlign="right"
+                      w="35%"
+                      py="10px"
+                      textDecoration="line-through"
+                      
+                    >
+                      £{product.price}
+                    </Text>
+                    <Text
+                      fontSize="xl"
+                      fontWeight="bold"
+                      color={textColor}
+                      // textAlign="center"
+                      // w="50%"
+                      pl="10px"
+                      py="10px"
+                    >
+                      £{getUpdatedPrice(product.price)}
+                    </Text>
+                  </Flex>
+
                   <Text
                     height={"initial"}
                     bg={"#F06B02"}
@@ -125,7 +147,7 @@ export default function RewardPointsScreen() {
                       bg: "#F08C30",
                       transition: "background-color 0.2s ease-in-out",
                     }}
-                    onClick={() => handlePurchase(product.id, product.price)}
+                    onClick={() => handlePurchase(product)}
                     w="50%"
                     border="1px solid white"
                     cursor={"pointer"}
