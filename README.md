@@ -1,4 +1,4 @@
-Basic Technical Test for [AIMEGroup](https://aime.global/)
+
 
 ## System requirements
 
